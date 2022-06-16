@@ -10,7 +10,7 @@ class Testing extends BaseController
     {
         //
         $data = [];
-        return view('admin/testing/coba', $data);
+        // return view('admin/testing/coba', $data);
         // return view('login/layout', $data);
     }
 }
