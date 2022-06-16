@@ -40,7 +40,7 @@ $routes->set404Override();
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Auth::index');
 $routes->get('/auth', 'Auth::index');
-$routes->get('/index', 'index::index');
+$routes->get('/index', 'index::index', ['filter' => 'cekLogin']);
 // $routes->get('/auth', 'Auth::index');
 
 /*
