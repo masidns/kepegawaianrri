@@ -23,7 +23,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cekLogin' => \App\Filters\Ceklogin::class,
+        'CEK' => \App\Filters\Ceklogin::class,
     ];
 
     /**

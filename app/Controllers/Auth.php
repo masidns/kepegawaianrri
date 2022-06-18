@@ -32,8 +32,44 @@ class Auth extends BaseController
                 ];
                 $this->auth->insert($data);
             }
-            return view('login/singin');
+            return view('login/signin');
         }
         // dd($this->auth->findall());
+    }
+
+    public function signin()
+    {
+        # code...
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $data = $this->auth->where('email', $email)->orwhere('username', $email)->first();
+        if ($data) {
+            $pass = $data['password'];
+            $cekpassword = password_verify($password, $pass);
+            if ($cekpassword) {
+                $cekdatauser = [
+                    'idusers' => $data['idusers'],
+                    'username' => $data['username'],
+                    'email' => $data['email'],
+                    'login' => true,
+                ];
+                session()->set($cekdatauser);
+                session()->setFlashdata('pesan', 'Success, Anda Berhasil Login');
+                return redirect()->to('/home');
+            } else {
+                session()->setFlashdata('pesan', 'Error,Silahkan cek kembali password anda');
+                return redirect()->back();
+            }
+        } else {
+            session()->setFlashdata('pesan', 'Error,Silahkan Periksa email anda / username anda');
+            return redirect()->back();
+        }
+    }
+
+    public function logout()
+    {
+        # code...
+        session()->destroy();
+        return redirect()->to('/');
     }
 }

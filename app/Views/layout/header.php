@@ -48,7 +48,7 @@
                     </a>
                 </li> -->
          <li class="nav-item">
-             <a href="" class="nav-link btn-lg btn-default">
+             <a href="<?= base_url('auth/logout') ?>" class="nav-link btn-lg btn-default">
                  logout
              </a>
          </li>
