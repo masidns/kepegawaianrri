@@ -34,6 +34,9 @@
         href="<?= base_url() ?>/admin/plugins_/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- tabel -->
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -114,6 +117,29 @@
     <script src="<?= base_url() ?>/admin/plugins_/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url() ?>/admin/plugins_/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url() ?>/admin/plugins_/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="<?= base_url() ?>/admin/plugins_/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+    var pesan = "<?= session()->getFlashdata('pesan') ?>";
+    const swal = pesan.split(',');
+    if (swal.length > 1) {
+        if (swal[0] == 'Success') {
+            Swal.fire({
+                title: 'Success!',
+                text: swal[1],
+                icon: 'success'
+            })
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: swal[1],
+                icon: 'error'
+            })
+        }
+    }
+    </script>
+    <!-- SweetAlert2 -->
+
     <script>
     $(function() {
         $("#example1").DataTable({

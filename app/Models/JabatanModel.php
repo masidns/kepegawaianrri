@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class JabatanModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jabatans';
-    protected $primaryKey       = 'id';
+    protected $table            = 'jabatan';
+    protected $primaryKey       = 'idjabatan';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama_jabatan'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +39,15 @@ class JabatanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getjabatan($idjabatan = false)
+    {
+        # code...
+        if ($idjabatan == false) {
+            return $this->db->table('jabatan')
+                ->get()->getResult();
+        }
+        return $this->db->table('jabatan')
+            ->getWhere(['idjabatan' => $idjabatan])->getRow();
+    }
 }
