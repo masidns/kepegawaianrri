@@ -53,8 +53,8 @@ class Jabatan extends BaseController
     public function update($idjabatan)
     {
         # code...
-        $namalama = $this->jabatan->getjabatan($this->request->getVar('nama_jabatan'));
-        if ($namalama->nama_jabatan == $this->request->getVar('nama_jabatan')) {
+        $namalama = $this->request->getVar('nama_jabatan_lama');
+        if ($namalama == $this->request->getVar('nama_jabatan')) {
             $rules = 'required';
         } else {
             $rules = 'required|is_unique[jabatan.nama_jabatan]';
