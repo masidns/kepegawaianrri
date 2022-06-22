@@ -56,7 +56,7 @@ use Faker\Provider\Base;
                                     <td><?= $value->nama_jabatan ?></td>
                                     <td align="center">
                                         <button type="button" class="btn-sm btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idjabatan ?>"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        <a href="<?= base_url('/jabatan/delete/' . $value->idjabatan) ?>" class="btn-sm btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

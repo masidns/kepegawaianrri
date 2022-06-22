@@ -127,6 +127,16 @@ class Pegawai extends BaseController
         return redirect()->to('/pegawai');
     }
 
+    public function update($idpegawai)
+    {
+        # code...
+        $data = [
+            'validation' => \Config\Services::validation(),
+            'pegawai' => $this->pegawaimodel->getpegawai($idpegawai),
+        ];
+        return view('admin/pegawai/edit', $data);
+    }
+
     public function detail($idpegawai)
     {
         # code...

@@ -42,10 +42,13 @@ $routes->get('/home', 'Home::index', ['filter' => 'CEK']);
 
 $routes->get('/jabatan', 'jabatan::index', ['filter' => 'CEK']);
 $routes->post('/jabatan/save', 'jabatan::save', ['filter' => 'CEK']);
+$routes->delete('/jabatan/delete/(:num)', 'jabatan::delete/$1');
+
 
 $routes->get('/pegawai', 'pegawai::index', ['filter' => 'CEK']);
 $routes->get('/pegawai/insert', 'pegawai::insert', ['filter' => 'CEK']);
 $routes->get('/pegawai/detail/$1', 'pegawai::detail/$1');
+$routes->get('/pegawai/update/$1', 'pegawai::update/$1');
 $routes->post('/pegawai/save', 'pegawai::save', ['filter' => 'CEK']);
 
 /*

@@ -7,15 +7,13 @@
     <title>AdminLTE 3 | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="<?= base_url() ?>/admin/plugins_/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -30,8 +28,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/summernote/summernote-bs4.min.css">
     <!-- tabel -->
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="<?= base_url() ?>/admin/plugins_/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- tabel -->
 
@@ -77,7 +74,7 @@
     <script src="<?= base_url() ?>/admin/plugins_/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>/admin/plugins_/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -120,61 +117,80 @@
     <!-- SweetAlert2 -->
     <script src="<?= base_url() ?>/admin/plugins_/sweetalert2/sweetalert2.min.js"></script>
     <script>
-    var pesan = "<?= session()->getFlashdata('pesan') ?>";
-    const swal = pesan.split(',');
-    if (swal.length > 1) {
-        if (swal[0] == 'Success') {
-            Swal.fire({
-                title: 'Success!',
-                text: swal[1],
-                icon: 'success'
-            })
-        } else {
-            Swal.fire({
-                title: 'Error!',
-                text: swal[1],
-                icon: 'error'
-            })
+        var pesan = "<?= session()->getFlashdata('pesan') ?>";
+        const swal = pesan.split(',');
+        if (swal.length > 1) {
+            if (swal[0] == 'Success') {
+                Swal.fire({
+                    title: 'Success!',
+                    text: swal[1],
+                    icon: 'success'
+                })
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: swal[1],
+                    icon: 'error'
+                })
+            }
         }
-    }
     </script>
     <!-- SweetAlert2 -->
 
     <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-    });
-    $(function() {
-        $(".example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('.example1_wrapper .col-md-6:eq(0)');
-        $('.example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+        $(function() {
+            $(".example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('.example1_wrapper .col-md-6:eq(0)');
+            $('.example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-    });
+        //swall hapus
+        $(document).on('click', '.btn-hapus', function(e) {
+            e.preventDefault();
+            const href = $(this).attr('href')
+
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data Akan dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = href;
+                }
+            });
+        })
     </script>
     <!-- tabel -->
 </body>

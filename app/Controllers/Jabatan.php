@@ -80,4 +80,16 @@ class Jabatan extends BaseController
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
         return redirect()->back();
     }
+
+    public function delete($idjabatan)
+    {
+        # code...
+        // dd($idjabatan);
+        if ($this->jabatan->delete($idjabatan)) {
+            session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
+        } else {
+            session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+        }
+        return redirect()->to('jabatan');
+    }
 }
