@@ -54,7 +54,7 @@ use Faker\Provider\Base;
                                 <tr>
                                     <td><?= $key + 1; ?></td>
                                     <td><?= $value->nama_jabatan ?></td>
-                                    <td>
+                                    <td align="center">
                                         <button type="button" class="btn-sm btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idjabatan ?>"><i class="fas fa-edit"></i></button>
                                         <button class="btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                     </td>

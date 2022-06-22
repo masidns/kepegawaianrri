@@ -189,9 +189,9 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Status Perkawinan
-                                            terakhir</label>
+                                        </label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="status_perkawinan" class="form-control <?= ($validation->hasError('status_perkawinan')) ? 'is-invalid' : '' ?>" value="<?= (old('status_perkawinan')) ?>" id="colFormLabel" placeholder="Masukan Status Perkawinan terakhir">
+                                            <input type="text" name="status_perkawinan" class="form-control <?= ($validation->hasError('status_perkawinan')) ? 'is-invalid' : '' ?>" value="<?= (old('status_perkawinan')) ?>" id="colFormLabel" placeholder="Masukan Status Perkawinan">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('status_perkawinan'); ?>
                                             </div>
@@ -207,7 +207,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="colFormLabel" class="col-sm-3 col-form-label">Jenis kelamin</label>
+                                        <label for="colFormLabel" class="col-sm-3 col-form-label">Jabatan</label>
                                         <div class="col-sm-9">
                                             <select name="idjabatan" class="custom-select   <?= ($validation->hasError('idjabatan')) ? 'is-invalid' : '' ?> " required>
                                                 <option selected>Choose...</option>

@@ -126,4 +126,15 @@ class Pegawai extends BaseController
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
         return redirect()->to('/pegawai');
     }
+
+    public function detail($idpegawai)
+    {
+        # code...
+        $data = [
+            'pegawai' => $this->pegawaimodel->getpegawai($idpegawai),
+            'validation' => \Config\Services::validation(),
+        ];
+        // dd($data);
+        return view('admin/pegawai/detail', $data);
+    }
 }
