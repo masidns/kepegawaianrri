@@ -32,13 +32,24 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIP</th>
                                 <th>Nama Pegawai</th>
                                 <th>No. Telepeon</th>
+                                <th>Jabatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <?php foreach ($pegawai as $key => $value) : ?>
+                                <tr>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $value->nip ?></td>
+                                    <td><?= $value->nama ?></td>
+                                    <td><?= $value->no_telepon ?></td>
+                                    <td><?= $value->idjabatan ?></td>
+                                    <td>Aksi</td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

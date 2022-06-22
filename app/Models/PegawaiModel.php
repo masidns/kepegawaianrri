@@ -7,14 +7,27 @@ use CodeIgniter\Model;
 class PegawaiModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'pegawais';
-    protected $primaryKey       = 'id';
+    protected $table            = 'pegawai';
+    protected $primaryKey       = 'idpegawai';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'nip',
+        'nama',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'agama',
+        'alamat',
+        'pendidikan_terakhir',
+        'status_perkawinan',
+        'no_telepon',
+        'foto',
+        'idjabatan',
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +52,19 @@ class PegawaiModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getpegawai($idpegawai = false)
+    {
+        # code...
+        if ($idpegawai == false) {
+            return $this->db->table('pegawai')
+                ->orderBy('pegawai.idpegawai', 'DESC')
+                ->join('jabatan', 'jabatan.idjabatan = pegawai.idjabatan')
+                ->get()->getResult();
+        }
+        return $this->db->table('pegawai')
+            ->join('jabatan', 'jabatan.idjabatan = pegawai.idjabatan')
+            ->getWhere(['idpegawai' => $idpegawai])->getRowObject();
+    }
 }
