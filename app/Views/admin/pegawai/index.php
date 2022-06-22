@@ -46,8 +46,12 @@
                                     <td><?= $value->nip ?></td>
                                     <td><?= $value->nama ?></td>
                                     <td><?= $value->no_telepon ?></td>
-                                    <td><?= $value->idjabatan ?></td>
-                                    <td>Aksi</td>
+                                    <td><?= $value->nama_jabatan ?></td>
+                                    <td align="center">
+                                        <a href="" class="btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="" class="btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                        <a href="" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                    </td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>

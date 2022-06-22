@@ -40,6 +40,13 @@ $routes->get('/', 'Auth::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/home', 'Home::index', ['filter' => 'CEK']);
 
+$routes->get('/jabatan', 'jabatan::index', ['filter' => 'CEK']);
+$routes->post('/jabatan/save', 'jabatan::save', ['filter' => 'CEK']);
+
+$routes->get('/pegawai', 'pegawai::index', ['filter' => 'CEK']);
+$routes->get('/pegawai/insert', 'pegawai::insert', ['filter' => 'CEK']);
+$routes->post('/pegawai/save', 'pegawai::save', ['filter' => 'CEK']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
