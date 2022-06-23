@@ -60,7 +60,9 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">NIP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="nip" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : '' ?>" value="<?= (old('nip')) ?>" id="colFormLabel" placeholder="Masukan NIP">
+                                            <input type="text" name="nip"
+                                                class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : (old('nip') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('nip')) ?>" id="colFormLabel" placeholder="Masukan NIP">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('nip'); ?>
                                             </div>
@@ -69,7 +71,10 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Nama</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="nama" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : '' ?>" value="<?= (old('nama')) ?>" id="colFormLabel" placeholder="Masukan Nama">
+                                            <input type="text" name="nama"
+                                                class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : (old('nama') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('nama')) ?>" id="colFormLabel"
+                                                placeholder="Masukan Nama">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('nama'); ?>
                                             </div>
@@ -78,10 +83,16 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Jenis kelamin</label>
                                         <div class="col-sm-9">
-                                            <select name="jenis_kelamin" class="custom-select   <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : '' ?> " required>
+                                            <select name="jenis_kelamin"
+                                                class="custom-select <?= old('jenis_kelamin') == '' ? '' : (old('jenis_kelamin') == 'Laki-laki' ? 'is-valid' : (old('jenis_kelamin') == 'Perempuan' ? 'is-valid' : 'is-invalid')) ?> "
+                                                required>
                                                 <option>Choose...</option>
-                                                <option value="Laki-laki" <?= (old('jenis_kelamin')) == 'Laki-laki' ? 'Selected' : '' ?>>Laki-laki</option>
-                                                <option value="Perempuan" <?= (old('jenis_kelamin')) == 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
+                                                <option value="Laki-laki"
+                                                    <?= (old('jenis_kelamin')) == 'Laki-laki' ? 'Selected' : ($validation->hasError('jenis_kelamin')) ?>>
+                                                    Laki-laki</option>
+                                                <option value="Perempuan"
+                                                    <?= (old('jenis_kelamin')) == 'Perempuan' ? 'selected' : ($validation->hasError('jenis_kelamin')) ?>>
+                                                    Perempuan</option>
                                             </select>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('jenis_kelamin'); ?>
@@ -92,7 +103,10 @@
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Tanggal
                                             lahir</label>
                                         <div class="col-sm-9">
-                                            <input type="date" name="tanggal_lahir" value="<?= (old('tanggal_lahir')) ?>" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : '' ?>" value="<?= (old('tanggal_lahir')) ?>" id="colFormLabel" placeholder="Masukan Tanggal lahir">
+                                            <input type="date" name="tanggal_lahir"
+                                                class="form-control <?= ($validation->hasError('tanggal_lahir')) ? 'is-invalid' : (old('tanggal_lahir') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('tanggal_lahir')) ? old('tanggal_lahir') : '' ?>"
+                                                id="colFormLabel" placeholder="Masukan Tanggal lahir">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('tanggal_lahir'); ?>
                                             </div>
@@ -101,7 +115,10 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Tempat lahir</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="tempat_lahir" class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : '' ?>" value="<?= (old('tempat_lahir')) ?>" id="colFormLabel" placeholder="Masukan Tempat lahir">
+                                            <input type="text" name="tempat_lahir"
+                                                class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : (old('tempat_lahir') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('tempat_lahir')) ?>" id="colFormLabel"
+                                                placeholder="Masukan Tempat lahir">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('tempat_lahir'); ?>
                                             </div>
@@ -113,57 +130,57 @@
                                             <div class="row form-control-border">
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama1" value="Islam">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="agama1" value="Islam"
+                                                            <?= (old('agama')) == 'Islam' ? 'Checked' : ''  ?>>
                                                         <label class="form-check-label" for="agama1">
                                                             Islam
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Protestan">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="agama2" value="Protestan"
+                                                            <?= (old('agama')) == 'Protestan' ? 'Checked' : '' ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Protestan
                                                         </label>
                                                     </div>
+                                                </div>
+                                                <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khatolik">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="agama2" value="Khatolik"
+                                                            <?= (old('agama')) == 'Khatolik' ? 'Checked' : '' ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Khatolik
                                                         </label>
                                                     </div>
-                                                    <!-- <div class="form-check disabled">
-                                                    <input class="form-check-input" type="radio" name="agama"
-                                                        id="agama3" value="option3" disabled>
-                                                    <label class="form-check-label" for="agama3">
-                                                        Hindu
-                                                    </label>
-                                                </div> -->
-                                                </div>
-                                                <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="Hindu" value="Hindu">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="Hindu" value="Hindu"
+                                                            <?= (old('agama')) == 'Hindu' ? 'Checked' : '' ?>>
                                                         <label class="form-check-label" for="agama1">
                                                             Hindu
                                                         </label>
                                                     </div>
+                                                </div>
+                                                <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Buddha">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="agama2" value="Buddha"
+                                                            <?= (old('agama')) == 'Buddha' ? 'Checked' : '' ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Buddha
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khonghucu">
+                                                        <input class="form-check-input" type="radio" name="agama"
+                                                            id="agama2" value="Khonghucu"
+                                                            <?= (old('agama')) == 'Khonghucu' ? 'checked' : '' ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Khonghucu
                                                         </label>
                                                     </div>
-                                                    <!-- <div class="form-check disabled">
-                                                    <input class="form-check-input" type="radio" name="agama"
-                                                        id="agama3" value="option3" disabled>
-                                                    <label class="form-check-label" for="agama3">
-                                                        Disabled radio
-                                                    </label>
-                                                </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +188,10 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Alamat</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : '' ?>" name="alamat" id="exampleFormControlTextarea1" rows="3"><?= (old('alamat')) ?></textarea>
+                                            <textarea
+                                                class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : (old('alamat') ? 'is-valid' : '') ?>"
+                                                name="alamat" id="exampleFormControlTextarea1"
+                                                rows="3"><?= (old('alamat')) ?></textarea>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('alamat'); ?>
                                             </div>
@@ -181,17 +201,36 @@
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Pendidikan
                                             terakhir</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="pendidikan_terakhir" class="form-control <?= ($validation->hasError('pendidikan_terakhir')) ? 'is-invalid' : '' ?>" value="<?= (old('pendidikan_terakhir')) ?>" id="colFormLabel" placeholder="Masukan pendidikan terakhir">
+                                            <input type="text" name="pendidikan_terakhir"
+                                                class="form-control <?= ($validation->hasError('pendidikan_terakhir')) ? 'is-invalid' : (old('pendidikan_terakhir') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('pendidikan_terakhir')) ?>" id="colFormLabel"
+                                                placeholder="Masukan pendidikan terakhir">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('pendidikan_terakhir'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="colFormLabel" class="col-sm-3 col-form-label">Status Perkawinan
-                                        </label>
+                                        <label for="colFormLabel" class="col-sm-3 col-form-label">Status
+                                            Perkawinan</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="status_perkawinan" class="form-control <?= ($validation->hasError('status_perkawinan')) ? 'is-invalid' : '' ?>" value="<?= (old('status_perkawinan')) ?>" id="colFormLabel" placeholder="Masukan Status Perkawinan">
+                                            <select name="status_perkawinan"
+                                                class="custom-select   <?= old('status_perkawinan') == '' ? '' : (old('status_perkawinan') == 'Belum Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Hidup' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Mati' ? 'is-valid' : 'is-invalid')))) ?> "
+                                                required>
+                                                <option>Status Perkawinan...</option>
+                                                <option value="Belum Kawin"
+                                                    <?= (old('status_perkawinan')) == 'Belum Kawin' ? 'Selected' : '' ?>>
+                                                    Belum Kawin</option>
+                                                <option value="Kawin"
+                                                    <?= (old('status_perkawinan')) == 'Kawin' ? 'Selected' : '' ?>>
+                                                    Kawin</option>
+                                                <option value="Cerai Hidup"
+                                                    <?= (old('status_perkawinan')) == 'Cerai Hidup' ? 'Selected' : '' ?>>
+                                                    Cerai Hidup</option>
+                                                <option value="Cerai Mati"
+                                                    <?= (old('status_perkawinan')) == 'Cerai Mati' ? 'Selected' : '' ?>>
+                                                    Cerai Mati</option>
+                                            </select>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('status_perkawinan'); ?>
                                             </div>
@@ -200,7 +239,10 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Nomor Telepon</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="no_telepon" class="form-control <?= ($validation->hasError('no_telepon')) ? 'is-invalid' : '' ?>" value="<?= (old('no_telepon')) ?>" id="colFormLabel" placeholder="Masukan Nomor Telepon">
+                                            <input type="text" name="no_telepon"
+                                                class="form-control <?= ($validation->hasError('no_telepon')) ? 'is-invalid' : (old('no_telepon') ? 'is-valid' : '') ?>"
+                                                value="<?= (old('no_telepon')) ?>" id="colFormLabel"
+                                                placeholder="Masukan Nomor Telepon">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('no_telepon'); ?>
                                             </div>
@@ -209,10 +251,16 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Jabatan</label>
                                         <div class="col-sm-9">
-                                            <select name="idjabatan" class="custom-select   <?= ($validation->hasError('idjabatan')) ? 'is-invalid' : '' ?> " required>
-                                                <option selected>Choose...</option>
-                                                <option value="1" <?= (old('idjabatan')) == '1' ? 'Selected' : '' ?>>Laki-laki</option>
-                                                <option value="2" <?= (old('idjabatan')) == '2' ? 'selected' : '' ?>>Perempuan</option>
+                                            <select name="idjabatan"
+                                                class="custom-select    <?= old('idjabatan') == '' ? '' : (old('idjabatan') ? 'is-valid' : 'is-invalid') ?> ">
+                                                <option value="0">Choose...</option>
+                                                <?php foreach ($jabatan as $key => $value) : ?>
+                                                <option value="<?= $value->idjabatan ?>"
+                                                    <?= (old('idjabatan')) == $value->idjabatan ? 'Selected' : '' ?>>
+
+                                                    <?= $value->nama_jabatan ?>
+                                                </option>
+                                                <?php endforeach ?>
                                             </select>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('idjabatan'); ?>

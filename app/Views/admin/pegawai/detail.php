@@ -52,7 +52,9 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h5 class="float-left m-0">Detail Data Pegawai</h5>
-                            <!-- <a href="#" class="float-right btn-sm btn-success ">Tambah data</a> -->
+                            <a href="<?= base_url('pegawai/update/' . $pegawai->idpegawai)  ?>"
+                                class="float-right btn-sm btn-warning "><i class="fas fa-edit"></i> Edit
+                                data</a>
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
@@ -70,19 +72,22 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->jenis_kelamin ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->jenis_kelamin ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->tanggal_lahir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->tanggal_lahir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Tempat Lahir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->tempat_lahir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->tempat_lahir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -100,29 +105,33 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Pendidikan Terakhir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->pendidikan_terakhir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->pendidikan_terakhir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Status Perkawinan</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->status_perkawinan ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->status_perkawinan ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Jabatan</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->nama_jabatan ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->nama_jabatan ?></label>
                                 </div>
                             </div>
                         </div>
                         <div class=" card-footer">
-                            <button type="submit" class="btn-sm btn-warning btn-block text-center"><i class="fas fa-edit"></i> EDIT</button>
+                            <!-- <a href="" class="btn-sm btn-warning btn-block text-center"><i class="fas fa-edit"></i> EDIT</a> -->
                         </div>
                     </div>
                 </div>
             </div>
 
+            <?php if ($pegawai->status_perkawinan == 'Kawin' || $pegawai->status_perkawinan == 'Cerai Hidup' || $pegawai->status_perkawinan == 'Cerai Mati') : ?>
             <div class="row">
                 <div class="col-sm-4">
 
@@ -163,6 +172,7 @@
                     </div>
                 </div>
             </div>
+            <?php endif ?>
         </div>
     </div>
 
