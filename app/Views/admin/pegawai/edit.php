@@ -80,8 +80,8 @@
                                         <div class="col-sm-9">
                                             <select name="jenis_kelamin" class="custom-select   <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : '' ?> " required>
                                                 <option>Choose...</option>
-                                                <option value="Laki-laki" <?= $pegawai->jenis_kelamin ? 'Selected' : '' ?>>Laki-laki</option>
-                                                <option value="Perempuan" <?= $pegawai->jenis_kelamin ? 'selected' : '' ?>>Perempuan</option>
+                                                <option value="Laki-laki" <?= (old('jenis_kelamin') ? 'selected' : ($pegawai->jenis_kelamin == 'Laki-laki' ? 'Selected' : '')) ?>>Laki-laki</option>
+                                                <option value="Perempuan" <?= (old('jenis_kelamin') ? 'selected' : ($pegawai->jenis_kelamin == 'Perempuan' ? 'Selected' : '')) ?>>Perempuan</option>
                                             </select>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('jenis_kelamin'); ?>
@@ -103,7 +103,7 @@
                                         <div class="col-sm-9">
                                             <input type="text" name="tempat_lahir" class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : '' ?>" value="<?= (old('tempat_lahir')) ? old('tempat_lahir') : $pegawai->tempat_lahir ?>" id="colFormLabel" placeholder="Masukan Tempat lahir">
                                             <div id="" class="invalid-feedback">
-                                                <?= $validation->getError('tempatlahir'); ?>
+                                                <?= $validation->getError('tempat_lahir'); ?>
                                             </div>
                                         </div>
                                     </div>

@@ -103,14 +103,14 @@
                                         <div class="col-sm-9">
                                             <input type="text" name="tempat_lahir" class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : '' ?>" value="<?= (old('tempat_lahir')) ?>" id="colFormLabel" placeholder="Masukan Tempat lahir">
                                             <div id="" class="invalid-feedback">
-                                                <?= $validation->getError('tempatlahir'); ?>
+                                                <?= $validation->getError('tempat_lahir'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Agama</label>
                                         <div class="col-sm-9">
-                                            <div class="row">
+                                            <div class="row form-control-border">
                                                 <div class="col">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="agama" id="agama1" value="Islam">
