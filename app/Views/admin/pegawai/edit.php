@@ -22,8 +22,7 @@
     <div class="content">
         <div class="container-fluid">
 
-            <form action="<?= base_url('/pegawai/update_data/' . $pegawai->idpegawai) ?>" method="post"
-                enctype="multipart/form-data">
+            <form action="<?= base_url('/pegawai/update_data/' . $pegawai->idpegawai) ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-4">
@@ -61,10 +60,7 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">NIP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="nip"
-                                                class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : (old('nip') ? 'is-valid' : ($pegawai->nip ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('nip')) ? old('nip') : $pegawai->nip ?>"
-                                                id="colFormLabel" placeholder="Masukan NIP">
+                                            <input type="text" name="nip" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : (old('nip') ? 'is-valid' : ($pegawai->nip ? 'is-valid' : '')) ?>" value="<?= (old('nip')) ? old('nip') : $pegawai->nip ?>" id="colFormLabel" placeholder="Masukan NIP">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('nip'); ?>
                                             </div>
@@ -73,10 +69,7 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Nama</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="nama"
-                                                class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : (old('nama') ? 'is-valid' : ($pegawai->nama ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('nama')) ? old('nama') : $pegawai->nama ?>"
-                                                id="colFormLabel" placeholder="Masukan Nama">
+                                            <input type="text" name="nama" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : (old('nama') ? 'is-valid' : ($pegawai->nama ? 'is-valid' : '')) ?>" value="<?= (old('nama')) ? old('nama') : $pegawai->nama ?>" id="colFormLabel" placeholder="Masukan Nama">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('nama'); ?>
                                             </div>
@@ -85,15 +78,11 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Jenis kelamin</label>
                                         <div class="col-sm-9">
-                                            <select name="jenis_kelamin"
-                                                class="custom-select   <?= old('jenis_kelamin') == '' ? '' : (old('jenis_kelamin') == 'Laki-laki' ? 'is-valid' : (old('jenis_kelamin') == 'Perempuan' ? 'is-valid' : 'is-invalid')) ?> "
-                                                required>
+                                            <select name="jenis_kelamin" class="custom-select   <?= old('jenis_kelamin') == '' ? 'is-valid' : (old('jenis_kelamin') != 'Laki-laki' ? 'is-valid' : (old('jenis_kelamin') == 'Perempuan' ? 'is-valid' : 'is-invalid')) ?> " required>
                                                 <option>Choose...</option>
-                                                <option value="Laki-laki"
-                                                    <?= ((old('jenis_kelamin')) == 'Laki-laki' ? 'selected' : ($pegawai->jenis_kelamin == 'Laki-laki' ? 'Selected' : '')) ?>>
+                                                <option value="Laki-laki" <?= ((old('jenis_kelamin')) == 'Laki-laki' ? 'selected' : ($pegawai->jenis_kelamin == 'Laki-laki' ? 'Selected' : '')) ?>>
                                                     Laki-laki</option>
-                                                <option value="Perempuan"
-                                                    <?= ((old('jenis_kelamin')) == 'Perempuan' ? 'selected' : ($pegawai->jenis_kelamin == 'Perempuan' ? 'Selected' : '')) ?>>
+                                                <option value="Perempuan" <?= ((old('jenis_kelamin')) == 'Perempuan' ? 'selected' : ($pegawai->jenis_kelamin == 'Perempuan' ? 'Selected' : '')) ?>>
                                                     Perempuan</option>
                                             </select>
                                             <div id="" class="invalid-feedback">
@@ -105,9 +94,7 @@
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Tanggal
                                             lahir</label>
                                         <div class="col-sm-9">
-                                            <input type="date" name="tanggal_lahir"
-                                                class="form-control <?= ($validation->hasError('tanggal_lahir')) ? 'is-invalid' : (old('tanggal_lahir') ? 'is-valid' : ($pegawai->tanggal_lahir ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('tanggal_lahir')) ? old('tanggal_lahir') : $pegawai->tanggal_lahir ?>">
+                                            <input type="date" name="tanggal_lahir" class="form-control <?= ($validation->hasError('tanggal_lahir')) ? 'is-invalid' : (old('tanggal_lahir') ? 'is-valid' : ($pegawai->tanggal_lahir ? 'is-valid' : '')) ?>" value="<?= (old('tanggal_lahir')) ? old('tanggal_lahir') : $pegawai->tanggal_lahir ?>">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('tanggal_lahir'); ?>
                                             </div>
@@ -116,10 +103,7 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Tempat lahir</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="tempat_lahir"
-                                                class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : (old('tempat_lahir') ? 'is-valid' : ($pegawai->tempat_lahir ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('tempat_lahir')) ? old('tempat_lahir') : $pegawai->tempat_lahir ?>"
-                                                id="colFormLabel" placeholder="Masukan Tempat lahir">
+                                            <input type="text" name="tempat_lahir" class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : (old('tempat_lahir') ? 'is-valid' : ($pegawai->tempat_lahir ? 'is-valid' : '')) ?>" value="<?= (old('tempat_lahir')) ? old('tempat_lahir') : $pegawai->tempat_lahir ?>" id="colFormLabel" placeholder="Masukan Tempat lahir">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('tempat_lahir'); ?>
                                             </div>
@@ -131,17 +115,13 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="agama1" value="Islam"
-                                                            <?= (old('agama')) == 'Islam' ? 'Checked' : ($pegawai->agama == 'Islam' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="agama1" value="Islam" <?= (old('agama')) == 'Islam' ? 'Checked' : ($pegawai->agama == 'Islam' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama1">
                                                             Islam
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="agama2" value="Protestan"
-                                                            <?= (old('agama')) == 'Protestan' ? 'Checked' : ($pegawai->agama == 'Protestan' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Protestan" <?= (old('agama')) == 'Protestan' ? 'Checked' : ($pegawai->agama == 'Protestan' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Protestan
                                                         </label>
@@ -149,17 +129,13 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="agama2" value="Khatolik"
-                                                            Protestan<?= (old('agama')) == 'Khatolik' ? 'Checked' : ($pegawai->agama == 'Khatolik' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khatolik" Protestan<?= (old('agama')) == 'Khatolik' ? 'Checked' : ($pegawai->agama == 'Khatolik' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Khatolik
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="Hindu" value="Hindu"
-                                                            <?= (old('agama')) == 'Hindu' ? 'Checked' : ($pegawai->agama == 'Hindu' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="Hindu" value="Hindu" <?= (old('agama')) == 'Hindu' ? 'Checked' : ($pegawai->agama == 'Hindu' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama1">
                                                             Hindu
                                                         </label>
@@ -167,17 +143,13 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="agama2" value="Buddha"
-                                                            <?= (old('agama')) == 'Buddha' ? 'Checked' : ($pegawai->agama == 'Buddha' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Buddha" <?= (old('agama')) == 'Buddha' ? 'Checked' : ($pegawai->agama == 'Buddha' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Buddha
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama"
-                                                            id="agama2" value="Khonghucu"
-                                                            <?= (old('agama')) == 'Khonghucu' ? 'Checked' : ($pegawai->agama == 'Khonghucu' ? 'checked' : '') ?>>
+                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khonghucu" <?= (old('agama')) == 'Khonghucu' ? 'Checked' : ($pegawai->agama == 'Khonghucu' ? 'checked' : '') ?>>
                                                         <label class="form-check-label" for="agama2">
                                                             Khonghucu
                                                         </label>
@@ -189,10 +161,7 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Alamat</label>
                                         <div class="col-sm-9">
-                                            <textarea
-                                                class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : (old('alamat') ? 'is-valid' : ($pegawai->alamat ? 'is-valid' : '')) ?>"
-                                                name="alamat" id="exampleFormControlTextarea1"
-                                                rows="3"><?= (old('alamat')) ? old('alamat') : $pegawai->alamat ?></textarea>
+                                            <textarea class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : (old('alamat') ? 'is-valid' : ($pegawai->alamat ? 'is-valid' : '')) ?>" name="alamat" id="exampleFormControlTextarea1" rows="3"><?= (old('alamat')) ? old('alamat') : $pegawai->alamat ?></textarea>
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('alamat'); ?>
                                             </div>
@@ -202,10 +171,7 @@
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Pendidikan
                                             terakhir</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="pendidikan_terakhir"
-                                                class="form-control <?= ($validation->hasError('pendidikan_terakhir')) ? 'is-invalid' : (old('pendidikan_terakhir') ? 'is-valid' : ($pegawai->pendidikan_terakhir ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('pendidikan_terakhir')) ? old('pendidikan_terakhir')  : $pegawai->pendidikan_terakhir ?>"
-                                                id="colFormLabel" placeholder="Masukan pendidikan terakhir">
+                                            <input type="text" name="pendidikan_terakhir" class="form-control <?= ($validation->hasError('pendidikan_terakhir')) ? 'is-invalid' : (old('pendidikan_terakhir') ? 'is-valid' : ($pegawai->pendidikan_terakhir ? 'is-valid' : '')) ?>" value="<?= (old('pendidikan_terakhir')) ? old('pendidikan_terakhir')  : $pegawai->pendidikan_terakhir ?>" id="colFormLabel" placeholder="Masukan pendidikan terakhir">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('pendidikan_terakhir'); ?>
                                             </div>
@@ -215,21 +181,15 @@
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Status Perkawinan
                                         </label>
                                         <div class="col-sm-9">
-                                            <select name="status_perkawinan"
-                                                class="custom-select   <?= old('status_perkawinan') == '' ? '' : (old('status_perkawinan') == 'Belum Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Hidup' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Mati' ? 'is-valid' : 'is-invalid')))) ?> "
-                                                required>
+                                            <select name="status_perkawinan" class="custom-select   <?= old('status_perkawinan') == '' ? 'is-valid' : (old('status_perkawinan') == 'Belum Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Kawin' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Hidup' ? 'is-valid' : (old('status_perkawinan') == 'Cerai Mati' ? 'is-valid' : 'is-invalid')))) ?> " required>
                                                 <option>Status Perkawinan...</option>
-                                                <option value="Belum Kawin"
-                                                    <?= ((old('status_perkawinan')) == 'Belum Kawin' ? 'selected' : ($pegawai->status_perkawinan == 'Belum Kawin' ? 'Selected' : '')) ?>>
+                                                <option value="Belum Kawin" <?= ((old('status_perkawinan')) == 'Belum Kawin' ? 'selected' : ($pegawai->status_perkawinan == 'Belum Kawin' ? 'Selected' : '')) ?>>
                                                     Belum Kawin</option>
-                                                <option value="Kawin"
-                                                    <?= ((old('status_perkawinan')) == 'Kawin' ? 'selected' : ($pegawai->status_perkawinan == 'Kawin' ? 'Selected' : '')) ?>>
+                                                <option value="Kawin" <?= $pegawai->status_perkawinan == 'Kawin' ? 'Selected' : '' ?>>
                                                     Kawin</option>
-                                                <option value="Cerai Hidup"
-                                                    <?= ((old('status_perkawinan')) == 'Cerai Hidup' ? 'selected' : ($pegawai->status_perkawinan == 'Cerai Hidup' ? 'Selected' : '')) ?>>
+                                                <option value="Cerai Hidup" <?= ((old('status_perkawinan')) == 'Cerai Hidup' ? 'selected' : ($pegawai->status_perkawinan == 'Cerai Hidup' ? 'Selected' : '')) ?>>
                                                     Cerai Hidup</option>
-                                                <option value="Cerai Mati"
-                                                    <?= ((old('status_perkawinan')) == 'Cerai Mati' ? 'selected' : ($pegawai->status_perkawinan == 'Cerai Mati' ? 'Selected' : '')) ?>>
+                                                <option value="Cerai Mati" <?= ((old('status_perkawinan')) == 'Cerai Mati' ? 'selected' : ($pegawai->status_perkawinan == 'Cerai Mati' ? 'Selected' : '')) ?>>
                                                     Cerai Mati</option>
                                             </select>
                                         </div>
@@ -237,10 +197,7 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Nomor Telepon</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="no_telepon"
-                                                class="form-control <?= ($validation->hasError('no_telepon')) ? 'is-invalid' : (old('no_telepon') ? 'is-valid' : ($pegawai->no_telepon ? 'is-valid' : '')) ?>"
-                                                value="<?= (old('no_telepon')) ? old('no_telepon') : $pegawai->no_telepon ?>"
-                                                id="colFormLabel" placeholder="Masukan Nomor Telepon">
+                                            <input type="text" name="no_telepon" class="form-control <?= ($validation->hasError('no_telepon')) ? 'is-invalid' : (old('no_telepon') ? 'is-valid' : ($pegawai->no_telepon ? 'is-valid' : '')) ?>" value="<?= (old('no_telepon')) ? old('no_telepon') : $pegawai->no_telepon ?>" id="colFormLabel" placeholder="Masukan Nomor Telepon">
                                             <div id="" class="invalid-feedback">
                                                 <?= $validation->getError('no_telepon'); ?>
                                             </div>
@@ -249,14 +206,12 @@
                                     <div class="form-group row">
                                         <label for="colFormLabel" class="col-sm-3 col-form-label">Jabatan</label>
                                         <div class="col-sm-9">
-                                            <select name="idjabatan"
-                                                class="custom-select    <?= old('idjabatan') != $pegawai->idjabatan ? '' : (old('idjabatan') ? 'is-valid' : 'is-valid') ?> ">
+                                            <select name="idjabatan" class="custom-select    <?= old('idjabatan') != $pegawai->idjabatan ? 'is-valid' : (old('idjabatan') ? 'is-valid' : 'is-valid') ?> ">
                                                 <option value="0">Choose...</option>
                                                 <?php foreach ($jabatan as $key => $value) : ?>
-                                                <option value="<?= $value->idjabatan ?>"
-                                                    <?= $pegawai->idjabatan == $value->idjabatan ? 'Selected' : '' ?>>
-                                                    <?= $value->nama_jabatan ?>
-                                                </option>
+                                                    <option value="<?= $value->idjabatan ?>" <?= $pegawai->idjabatan == $value->idjabatan ? 'Selected' : '' ?>>
+                                                        <?= $value->nama_jabatan ?>
+                                                    </option>
                                                 <?php endforeach ?>
                                             </select>
                                             <div id="" class="invalid-feedback">

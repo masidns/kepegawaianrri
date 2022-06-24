@@ -116,7 +116,12 @@
     <script src="<?= base_url() ?>/admin/plugins_/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="<?= base_url() ?>/admin/plugins_/sweetalert2/sweetalert2.min.js"></script>
+    //data mask
+    <script src="<?= base_url() ?>/admin/plugins_/inputmask/jquery.inputmask.min.js"></script>
+    //data mask
     <script>
+        $('[data-mask]').inputmask()
+
         var pesan = "<?= session()->getFlashdata('pesan') ?>";
         const swal = pesan.split(',');
         if (swal.length > 1) {
