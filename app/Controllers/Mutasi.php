@@ -40,6 +40,18 @@ class Mutasi extends BaseController
 
     public function save()
     {
+        if (!$this->validate([
+            'idpegawai' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => '{field} is required.'
+                ]
+            ],
+        ])) {
+            return redirect()->back()->withInput();
+        }
+
+
         # code...
         $this->mutasi->save([
             'nomutasi' => $this->request->getVar('nomutasi'),
@@ -51,6 +63,6 @@ class Mutasi extends BaseController
             'idpegawai' => $this->request->getVar('idpegawai'),
         ]);
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan ');
-        return redirect()->to('/mutasu');
+        return redirect()->to('/mutasi');
     }
 }

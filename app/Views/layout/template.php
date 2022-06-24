@@ -34,6 +34,10 @@
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- select -->
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- select -->
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -119,7 +123,20 @@
     //data mask
     <script src="<?= base_url() ?>/admin/plugins_/inputmask/jquery.inputmask.min.js"></script>
     //data mask
+    <!-- select -->
+    <script src="<?= base_url() ?>/admin/plugins_/select2/js/select2.full.min.js"></script>
+    <!-- select -->
     <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+
         $('[data-mask]').inputmask()
 
         var pesan = "<?= session()->getFlashdata('pesan') ?>";
