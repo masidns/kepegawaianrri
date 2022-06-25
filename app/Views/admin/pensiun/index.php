@@ -94,8 +94,14 @@
                                         <td><?= $value->tempat_pensiun ?></td>
                                         <td><?= $value->keterangan ?></td>
                                         <td align="center">
-                                            <a href="" class="btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                            <a href="" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                            <!-- <a href="" class="btn-sm btn-warning"><i class="fas fa-edit"></i></a> -->
+                                            <button type="button" class="btn-sm btn-warning" data-toggle="modal"
+                                                data-target="#modal-default-<?= $value->idpensiun ?>">
+                                                <i class="fas fa-edit"></i></button>
+                                            <button class="btn-sm btn-danger">
+                                                <a href="<?= base_url('/pensiun/delete/' . $value->idpensiun) ?>"
+                                                    class="btn-hapus"><i class="fas fa-trash"></i></a>
+                                            </button>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>
@@ -155,19 +161,26 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">No Pensiun</label>
-                        <input type="text" name="nopensiun"
-                            class="form-control <?= ($validation->hasError('nopensiun')) ? 'is-invalid' : '' ?>" id=""
-                            placeholder="No Pensiun">
+                        <input type="text" name="nopensiun" y
+                            class="form-control <?= ($validation->hasError('nopensiun')) ? 'is-invalid' : ((old('nopensiun')) ? 'is-valid' : '') ?>"
+                            value="<?= (old('nopensiun')) ?>" id="" placeholder="No Pensiun">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('nopensiun'); ?>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Pegawai</label>
                         <select name="idpegawai"
-                            class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai') ? 'is-valid' : '') ?>"
+                            class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai')  ? 'is-valid' : '') ?>"
                             style="width: 100%;" required>
                             <option Selected>Pilih Nama Pegawai...</option>
-                            <?php foreach ($pegawai as $key => $value) : ?>
-                            <option value="<?= $value->idpegawai ?>" <?= (old('idpegawai')) ? 'Selected' : '' ?>>
-                                <?= $value->nama ?></option>
+                            <?php foreach ($pegawaipensiun as $key => $value) : ?>
+                            <?php if (empty($value->nopensiun)) : ?>
+                            <option value="<?= $value->idpegawai ?>"
+                                <?= (old('idpegawai')) == $value->idpegawai ? 'Selected' : '' ?>>
+                                <?= $value->nama ?>
+                            </option>
+                            <?php endif ?>
                             <?php endforeach ?>
                             <div id="" class="invalid-feedback">
                                 <?= $validation->getError('idpegawai'); ?>
@@ -177,20 +190,29 @@
                     <div class="form-group">
                         <label for="">Tanggal Pensiun</label>
                         <input type="date" name="tanggal_pensiun"
-                            class="form-control <?= ($validation->hasError('tanggal_pensiun')) ? 'is-invalid' : '' ?>"
-                            id="" placeholder="Tanggal Pensiun">
+                            class="form-control <?= ($validation->hasError('tanggal_pensiun')) ? 'is-invalid' : ((old('tanggal_pensiun')) ? 'is-valid' : '') ?>"
+                            value="<?= (old('tanggal_pensiun')) ?>" id="">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('tanggal_pensiun'); ?>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Tempat Pensiun</label>
                         <input type="text" name="tempat_pensiun"
-                            class="form-control <?= ($validation->hasError('tempat_pensiun')) ? 'is-invalid' : '' ?>"
-                            id="" placeholder="Tempat Pensiun">
+                            class="form-control <?= ($validation->hasError('tempat_pensiun')) ? 'is-invalid' : ((old('tempat_pensiun')) ? 'is-valid' : '') ?>"
+                            value="<?= (old('tempat_pensiun')) ?>" id="" placeholder="Tempat Pensiun">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('tempat_pensiun'); ?>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Keterangan</label>
                         <textarea name="keterangan"
-                            class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : '' ?>"
-                            placeholder="Keterangan" id=""></textarea>
+                            class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ((old('keterangan')) ? 'is-valid' : '') ?>"
+                            placeholder="Keterangan" id=""><?= (old('keterangan')) ?></textarea>
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('keterangan'); ?>
+                        </div>
                     </div>
                     <!-- <p>One fine body&hellip;</p> -->
                 </div>
@@ -205,5 +227,94 @@
 
 </div>
 <!-- modal create -->
+
+<!-- modal update -->
+<?php foreach ($pensiun as $key => $value) : ?>
+<div class="modal fade" id="modal-default-<?= $value->idpensiun ?>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Data Pensiun</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('/pensiun/update/' . $value->idpensiun) ?>" method="post"
+                enctype="multipart/form-data">
+                <?php csrf_field() ?>
+                <input type="hidden" name="nopensiunlama" value="<?= $value->nopensiun ?>">
+                <input type="hidden" name="namalama" value="<?= $value->idpegawai ?>">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">No Pensiun</label>
+                        <input type="text" name="nopensiun" y
+                            class="form-control <?= ($validation->hasError('nopensiun')) ? 'is-invalid' : ((old('nopensiun')) ? 'is-valid' : ($value->nopensiun ? 'is-valid' : '')) ?>"
+                            value="<?= (old('nopensiun')) ? old('nopensiun') : $value->nopensiun ?>" id=""
+                            placeholder="No Pensiun">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('nopensiun'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nama Pegawai</label>
+                        <select name="idpegawai"
+                            class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai')  ? 'is-valid' : ($value->idpegawai ? 'is-valid' : '')) ?>"
+                            style="width: 100%;" required>
+                            <option Selected>Pilih Nama Pegawai...</option>
+                            <?php foreach ($pegawai as $key => $value1) : ?>
+                            <option value="<?= $value1->idpegawai ?>"
+                                <?= (old('idpegawai')) ? 'Selected' : ($value->idpegawai == $value1->idpegawai ? 'Selected' : '') ?>>
+                                <?= $value1->nama ?>
+                            </option>
+                            <?php endforeach ?>
+                            <div id="" class="invalid-feedback">
+                                <?= $validation->getError('idpegawai'); ?>
+                            </div>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Pensiun</label>
+                        <input type="date" name="tanggal_pensiun"
+                            class="form-control <?= ($validation->hasError('tanggal_pensiun')) ? 'is-invalid' : ((old('tanggal_pensiun')) ? 'is-valid' : ($value->tanggal_pensiun ? 'is-valid' : '')) ?>"
+                            value="<?= (old('tanggal_pensiun')) ? old('tanggal_pensiun') : $value->tanggal_pensiun ?>"
+                            id="">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('tanggal_pensiun'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tempat Pensiun</label>
+                        <input type="text" name="tempat_pensiun"
+                            class="form-control <?= ($validation->hasError('tempat_pensiun')) ? 'is-invalid' : ((old('tempat_pensiun')) ? 'is-valid' : ($value->tempat_pensiun ? 'is-valid' : '')) ?>"
+                            value="<?= (old('tempat_pensiun')) ? old('tempat_pensiun') : $value->tempat_pensiun ?>"
+                            id="" placeholder="Tempat Pensiun">
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('tempat_pensiun'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Keterangan</label>
+                        <textarea name="keterangan"
+                            class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ((old('keterangan')) ? 'is-valid' : ($value->keterangan ? 'is-valid' : '')) ?>"
+                            placeholder="Keterangan"
+                            id=""><?= (old('keterangan')) ? old('keterangan') : $value->keterangan ?></textarea>
+                        <div id="" class="invalid-feedback">
+                            <?= $validation->getError('keterangan'); ?>
+                        </div>
+                    </div>
+                    <!-- <p>One fine body&hellip;</p> -->
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<?php endforeach ?>
+<!-- modal update -->
 
 <?= $this->endSection() ?>
