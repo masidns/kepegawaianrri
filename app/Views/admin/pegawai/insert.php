@@ -115,42 +115,42 @@
                                             <div class="row form-control-border">
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama1" value="Islam" <?= (old('agama')) == 'Islam' ? 'Checked' : ''  ?>>
-                                                        <label class="form-check-label" for="agama1">
+                                                        <input class="form-check-input" type="radio" name="agama" id="Islam" value="Islam" <?= (old('agama')) == 'Islam' ? 'Checked' : ''  ?>>
+                                                        <label class="form-check-label" for="Islam">
                                                             Islam
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Protestan" <?= (old('agama')) == 'Protestan' ? 'Checked' : '' ?>>
-                                                        <label class="form-check-label" for="agama2">
+                                                        <input class="form-check-input" type="radio" name="agama" id="Protestan" value="Protestan" <?= (old('agama')) == 'Protestan' ? 'Checked' : '' ?>>
+                                                        <label class="form-check-label" for="Protestan">
                                                             Protestan
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khatolik" <?= (old('agama')) == 'Khatolik' ? 'Checked' : '' ?>>
-                                                        <label class="form-check-label" for="agama2">
+                                                        <input class="form-check-input" type="radio" name="agama" id="Khatolik" value="Khatolik" <?= (old('agama')) == 'Khatolik' ? 'Checked' : '' ?>>
+                                                        <label class="form-check-label" for="Khatolik">
                                                             Khatolik
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="agama" id="Hindu" value="Hindu" <?= (old('agama')) == 'Hindu' ? 'Checked' : '' ?>>
-                                                        <label class="form-check-label" for="agama1">
+                                                        <label class="form-check-label" for="Hindu">
                                                             Hindu
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Buddha" <?= (old('agama')) == 'Buddha' ? 'Checked' : '' ?>>
-                                                        <label class="form-check-label" for="agama2">
+                                                        <input class="form-check-input" type="radio" name="agama" id="Buddha" value="Buddha" <?= (old('agama')) == 'Buddha' ? 'Checked' : '' ?>>
+                                                        <label class="form-check-label" for="Buddha">
                                                             Buddha
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="agama" id="agama2" value="Khonghucu" <?= (old('agama')) == 'Khonghucu' ? 'checked' : '' ?>>
-                                                        <label class="form-check-label" for="agama2">
+                                                        <input class="form-check-input" type="radio" name="agama" id="Khonghucu" value="Khonghucu" <?= (old('agama')) == 'Khonghucu' ? 'checked' : '' ?>>
+                                                        <label class="form-check-label" for="Khonghucu">
                                                             Khonghucu
                                                         </label>
                                                     </div>

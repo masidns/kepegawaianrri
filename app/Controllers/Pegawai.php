@@ -10,12 +10,12 @@ use App\Models\PegawaiModel;
 class Pegawai extends BaseController
 {
 
-    protected $PasanganModel;
     public function __construct()
     {
         //Do your magic here
         $this->pegawaimodel = new PegawaiModel();
         $this->jabatan = new JabatanModel();
+        // $this->pasangan = new PasanganModel();
         $this->pasangan = new PasanganModel();
     }
 
@@ -254,5 +254,174 @@ class Pegawai extends BaseController
         ];
         // dd($data);
         return view('admin/pegawai/detail', $data);
+    }
+
+    public function insert_pasangan($idpegawai)
+    {
+        # code...
+        $data = [
+            'pegawai' => $this->pegawaimodel->getpegawai($idpegawai),
+            'pasangan' => $this->pasangan->getpasangan(),
+            'validation' => \Config\Services::validation(),
+
+        ];
+        return view('admin/pasangan/insert', $data);
+    }
+
+    public function save_pasangan($idpegawai)
+    {
+        # code...
+        if (!$this->validate([
+            'nama_pasangan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Pasaangan tidak boleh kosong'
+                ]
+            ],
+            'jenis_kelamin' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jenis kelamin tidak boleh kosong'
+                ]
+            ],
+            'agama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Agama tidak boleh kosong'
+                ]
+            ],
+            'tanggallahir' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir tidak boleh kosong'
+                ]
+            ],
+            'tempatlahir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+            'tanggalnikah' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir tidak boleh kosong'
+                ]
+            ],
+            'pendidikanterakhir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+            'pekerjaan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
+            return redirect()->back()->withInput();
+        };
+
+
+        $this->pasangan->save([
+            'nama_pasangan' => $this->request->getVar('nama_pasangan'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
+            'agama' => $this->request->getVar('agama'),
+            'tanggallahir' => $this->request->getVar('tanggallahir'),
+            'tempatlahir' => $this->request->getVar('tempatlahir'),
+            'tanggalnikah' => $this->request->getVar('tanggalnikah'),
+            'pendidikanterakhir' => $this->request->getVar('pendidikanterakhir'),
+            'pekerjaan' => $this->request->getVar('pekerjaan'),
+            'idpegawai' => $idpegawai,
+        ]);
+        session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
+        return redirect()->to('/pegawai/detail/' . $idpegawai);
+    }
+
+    public function update_pasangan($idpasangan)
+    {
+        # code...
+        $data = [
+            'validation' => \Config\Services::validation(),
+            'pasangan' => $this->pasangan->getpasangan($idpasangan),
+        ];
+        // dd($data['pasangan']);
+        return view('admin/pasangan/update', $data);
+    }
+
+    public function update_datapasangan($idpasangan)
+    {
+        # code...
+        if (!$this->validate([
+            'nama_pasangan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Pasaangan tidak boleh kosong'
+                ]
+            ],
+            'jenis_kelamin' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jenis kelamin tidak boleh kosong'
+                ]
+            ],
+            'agama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Agama tidak boleh kosong'
+                ]
+            ],
+            'tanggallahir' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir tidak boleh kosong'
+                ]
+            ],
+            'tempatlahir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+            'tanggalnikah' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir tidak boleh kosong'
+                ]
+            ],
+            'pendidikanterakhir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+            'pekerjaan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir tidak boleh kosong'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
+            return redirect()->back()->withInput();
+        };
+
+
+        $this->pasangan->save([
+            'idpasangan' => $idpasangan,
+            'nama_pasangan' => $this->request->getVar('nama_pasangan'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
+            'agama' => $this->request->getVar('agama'),
+            'tanggallahir' => $this->request->getVar('tanggallahir'),
+            'tempatlahir' => $this->request->getVar('tempatlahir'),
+            'tanggalnikah' => $this->request->getVar('tanggalnikah'),
+            'pendidikanterakhir' => $this->request->getVar('pendidikanterakhir'),
+            'pekerjaan' => $this->request->getVar('pekerjaan'),
+        ]);
+        session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
+        return redirect()->to('/pegawai');
     }
 }

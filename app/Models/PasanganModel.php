@@ -20,9 +20,10 @@ class PasanganModel extends Model
         'agama',
         'tanggallahir',
         'tempatlahir',
-        'tanggal_nikah',
+        'tanggalnikah',
         'pendidikanterakhir',
         'pekerjaan',
+        'idpegawai',
     ];
 
     // Dates
@@ -60,6 +61,6 @@ class PasanganModel extends Model
         }
         return $this->db->table('pasangan')
             ->join('pegawai', 'pegawai.idpegawai = pasangan.idpegawai')
-            ->get()->getResult();
+            ->get()->getRowObject();
     }
 }
