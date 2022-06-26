@@ -4,17 +4,19 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\JabatanModel;
+use App\Models\PasanganModel;
 use App\Models\PegawaiModel;
 
 class Pegawai extends BaseController
 {
 
-
+    protected $PasanganModel;
     public function __construct()
     {
         //Do your magic here
         $this->pegawaimodel = new PegawaiModel();
         $this->jabatan = new JabatanModel();
+        $this->pasangan = new PasanganModel();
     }
 
 
@@ -247,6 +249,7 @@ class Pegawai extends BaseController
         # code...
         $data = [
             'pegawai' => $this->pegawaimodel->getpegawai($idpegawai),
+            'pasangan' => $this->pasangan->getpasangan(),
             'validation' => \Config\Services::validation(),
         ];
         // dd($data);

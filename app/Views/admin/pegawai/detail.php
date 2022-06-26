@@ -52,7 +52,8 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h5 class="float-left m-0">Detail Data Pegawai</h5>
-                            <a href="<?= base_url('pegawai/update/' . $pegawai->idpegawai)  ?>" class="float-right btn-sm btn-warning "><i class="fas fa-edit"></i> Edit
+                            <a href="<?= base_url('pegawai/update/' . $pegawai->idpegawai)  ?>"
+                                class="float-right btn-sm btn-warning "><i class="fas fa-edit"></i> Edit
                                 data</a>
                         </div>
                         <div class="card-body">
@@ -71,19 +72,22 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->jenis_kelamin ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->jenis_kelamin ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->tanggal_lahir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->tanggal_lahir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Tempat Lahir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->tempat_lahir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->tempat_lahir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -101,13 +105,15 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Pendidikan Terakhir</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->pendidikan_terakhir ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->pendidikan_terakhir ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Status Perkawinan</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->status_perkawinan ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->status_perkawinan ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -119,7 +125,8 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-4 col-form-label">Jabatan</label>
                                 <div class="col-sm-8">
-                                    <label for="colFormLabel" class="col-form-label"><?= $pegawai->nama_jabatan ?></label>
+                                    <label for="colFormLabel"
+                                        class="col-form-label"><?= $pegawai->nama_jabatan ?></label>
                                 </div>
                             </div>
                         </div>
@@ -131,48 +138,93 @@
             </div>
 
             <?php if ($pegawai->status_perkawinan == 'Kawin' || $pegawai->status_perkawinan == 'Cerai Hidup' || $pegawai->status_perkawinan == 'Cerai Mati') : ?>
-                <div class="row">
-                    <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-4">
 
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <h5 class="card-title float-left">Data Anak</h5>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header" type="button" class="card-header" data-card-widget="collapse">
+                            <h5 class="card-title float-left">Data Pasangan</h5>
 
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <!-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button> -->
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <button class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> </button>
-                                <table class="table table-bordered table-striped example2 ">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Anak</th>
-                                            <th>Tempat Lahir</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>Anake ke</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </div>
-
+                            <!-- <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div> -->
                         </div>
+                        <div class="card-body">
+                            <a href="<?= base_url('/pasangan/insert/' . $pegawai->idpegawai) ?>"
+                                class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> </a>
+                            <table class="table table-bordered table-striped example2">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Pasangan</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Nikah</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>Pekerjaan</th>
+                                        <!-- <th>Status</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
+            </div>
+            <?php endif ?>
+
+            <?php if ($pegawai->status_perkawinan == 'Kawin' || $pegawai->status_perkawinan == 'Cerai Hidup' || $pegawai->status_perkawinan == 'Cerai Mati') : ?>
+            <div class="row">
+                <div class="col-sm-4">
+
+                </div>
+                <div class="col-sm-8">
+                    <div class="card card-primary card-outline">
+                        <div type="button" class="card-header" data-card-widget="collapse">
+                            <h5 class="card-title float-left">Data Anak</h5>
+
+                            <!-- <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div> -->
+                        </div>
+                        <div class="card-body">
+                            <button class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> </button>
+                            <table class="table table-bordered table-striped example2 ">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Anak</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Anake ke</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <?php endif ?>
         </div>
     </div>
+</div>
 
-    <?= $this->endSection() ?>
+<?= $this->endSection() ?>
