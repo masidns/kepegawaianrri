@@ -28,7 +28,7 @@
                     <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success ">Tambah data</a>
                 </div>
                 <div class="card-body">
-                    <table class="example2 table table-bordered table-striped ">
+                    <table class="example2 table table-hover table-bordered table-striped  ">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -36,7 +36,7 @@
                                 <th>Nama Pegawai</th>
                                 <th>No. Telepeon</th>
                                 <th>Jabatan</th>
-                                <th>Aksi</th>
+                                <td align="center"><i class="fas fa-cog"></i></td>
                             </tr>
                         </thead>
                         <tbody>

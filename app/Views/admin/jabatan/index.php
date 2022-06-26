@@ -41,12 +41,12 @@ use Faker\Provider\Base;
                         <i class="fas fa-plus"></i> Tambah
                     </button> -->
 
-                    <table id="example2" class="table table-bordered table-striped">
+                    <table id="example2" class="table table-hover table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Jabatan</th>
-                                <th>Aksi</th>
+                                <td align="center"><i class="fas fa-cog"></i></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,8 +55,8 @@ use Faker\Provider\Base;
                                     <td><?= $key + 1; ?></td>
                                     <td><?= $value->nama_jabatan ?></td>
                                     <td align="center">
-                                        <button type="button" class="btn-sm btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idjabatan ?>"><i class="fas fa-edit"></i></button>
-                                        <a href="<?= base_url('/jabatan/delete/' . $value->idjabatan) ?>" class="btn-sm btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idjabatan ?>"><i class="fas fa-edit"></i></button>
+                                        <a href="<?= base_url('/jabatan/delete/' . $value->idjabatan) ?>" class="btn btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

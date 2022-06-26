@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\JabatanModel;
+use App\Models\PegawaiModel;
 
 class Jabatan extends BaseController
 {
@@ -14,6 +15,7 @@ class Jabatan extends BaseController
         // parent::__construct();
         //Do your magic here
         $this->jabatan = new JabatanModel();
+        $this->pegawai = new PegawaiModel();
     }
 
 
@@ -84,12 +86,12 @@ class Jabatan extends BaseController
     public function delete($idjabatan)
     {
         # code...
-        // dd($idjabatan);
         if ($this->jabatan->delete($idjabatan)) {
             session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
+            return redirect()->to('jabatan');
         } else {
             session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+            return redirect()->back();
         }
-        return redirect()->to('jabatan');
     }
 }
