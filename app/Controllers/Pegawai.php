@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AnakModel;
 use App\Models\JabatanModel;
 use App\Models\PasanganModel;
 use App\Models\PegawaiModel;
@@ -17,6 +18,7 @@ class Pegawai extends BaseController
         $this->jabatan = new JabatanModel();
         // $this->pasangan = new PasanganModel();
         $this->pasangan = new PasanganModel();
+        $this->anak = new AnakModel();
     }
 
 
@@ -250,9 +252,10 @@ class Pegawai extends BaseController
         $data = [
             'pegawai' => $this->pegawaimodel->getpegawai($idpegawai),
             'pasangan' => $this->pasangan->getpasangan(),
+            'anak' => $this->anak->getanak(),
             'validation' => \Config\Services::validation(),
         ];
-        // dd($data);
+        // dd($data['pegawai']);
         return view('admin/pegawai/detail', $data);
     }
 
@@ -423,5 +426,115 @@ class Pegawai extends BaseController
         ]);
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
         return redirect()->to('/pegawai');
+    }
+
+    public function save_anak()
+    {
+        # code...
+        if (!$this->validate([
+            'nama_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Anak tidak boleh kosong!'
+                ]
+            ],
+            'tempat_lahir_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir anak tidak boleh kosong!'
+                ]
+            ],
+            'tanggal_lahir_anak' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir anak tidak boleh kosong!'
+                ]
+            ],
+            'anakke' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'tidak boleh kosong!'
+                ]
+            ],
+            'status_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Status Anak tidak boleh kosong!'
+                ]
+            ],
+            'idpegawai' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Status Anak tidak boleh kosong!'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
+            return redirect()->back()->withInput();
+        };
+
+        $this->anak->save([
+            'nama_anak' => $this->request->getVar('nama_anak'),
+            'tempat_lahir_anak' => $this->request->getVar('tempat_lahir_anak'),
+            'tanggal_lahir_anak' => $this->request->getVar('tanggal_lahir_anak'),
+            'anakke' => $this->request->getVar('anakke'),
+            'status_anak' => $this->request->getVar('status_anak'),
+            'idpegawai' => $this->request->getVar('idpegawai'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
+        return redirect()->back();
+    }
+
+    public function update_anak($idanak)
+    {
+        # code...
+        if (!$this->validate([
+            'nama_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Anak tidak boleh kosong!'
+                ]
+            ],
+            'tempat_lahir_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat lahir anak tidak boleh kosong!'
+                ]
+            ],
+            'tanggal_lahir_anak' => [
+                'rules' => 'valid_date',
+                'errors' => [
+                    'valid_date' => 'Tanggal lahir anak tidak boleh kosong!'
+                ]
+            ],
+            'anakke' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'tidak boleh kosong!'
+                ]
+            ],
+            'status_anak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Status Anak tidak boleh kosong!'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
+            return redirect()->back()->withInput();
+        };
+
+        $this->anak->save([
+            'idanak' => $idanak,
+            'nama_anak' => $this->request->getVar('nama_anak'),
+            'tempat_lahir_anak' => $this->request->getVar('tempat_lahir_anak'),
+            'tanggal_lahir_anak' => $this->request->getVar('tanggal_lahir_anak'),
+            'anakke' => $this->request->getVar('anakke'),
+            'status_anak' => $this->request->getVar('status_anak'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
+        return redirect()->back();
     }
 }

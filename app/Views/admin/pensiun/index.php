@@ -237,10 +237,12 @@
                             <label for="">Nama Pegawai</label>
                             <select name="idpegawai" class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai')  ? 'is-valid' : ($value->idpegawai ? 'is-valid' : '')) ?>" style="width: 100%;" required>
                                 <option Selected>Pilih Nama Pegawai...</option>
-                                <?php foreach ($pegawai as $key => $value1) : ?>
-                                    <option value="<?= $value1->idpegawai ?>" <?= (old('idpegawai')) ? 'Selected' : ($value->idpegawai == $value1->idpegawai ? 'Selected' : '') ?>>
+                                <?php foreach ($pegawaipensiun as $key => $value1) : ?>
+
+                                    <option value="<?= $value1->idpegawai ?>" <?= old('idpegawai') == $value1->idpegawai ? 'Selected' : ($value->idpegawai == $value1->idpegawai ? 'Selected' : '') ?>>
                                         <?= $value1->nama ?>
                                     </option>
+
                                 <?php endforeach ?>
                                 <div id="" class="invalid-feedback">
                                     <?= $validation->getError('idpegawai'); ?>

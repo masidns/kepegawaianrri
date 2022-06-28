@@ -89,12 +89,12 @@ class Pensiun extends BaseController
     public function update($idpensiun)
     {
         # code...
-        $idpegawai = $this->request->getVar('idpegawai');
-        $nopensiun = $this->request->getVar('nopensiun');
-        if ($idpegawai == $this->request->getVar('namalama') && $nopensiun == $this->request->getVar('nopensiunlama')) {
+        $idpegawai = $this->request->getVar('namalama');
+        $nopensiun = $this->request->getVar('nopensiunlama');
+        if ($idpegawai == $this->request->getVar('idpegawai') && $nopensiun == $this->request->getVar('nopensiun')) {
             $rules = 'required';
         } else {
-            $rulse = 'required|is_unique[pensiun.nopensiun]';
+            $rules = 'required|is_unique[pensiun.nopensiun]';
         }
 
         if (!$this->validate([
