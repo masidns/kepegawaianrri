@@ -14,6 +14,7 @@ class Mutasi extends BaseController
     {
         // parent::__construct();
         //Do your magic here
+        session()->set(['active' => 'mutasi']);
         $this->mutasi = new MutasiModel();
         $this->pegawai = new PegawaiModel();
     }

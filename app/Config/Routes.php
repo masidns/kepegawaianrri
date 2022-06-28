@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -37,19 +37,42 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Auth::index');
-$routes->get('/auth', 'Auth::index');
+$routes->post('/auth/signin', 'Auth::signin');
+$routes->get('/auth/logout', 'Auth::logout', ['filter' => 'CEK']);
 $routes->get('/home', 'Home::index', ['filter' => 'CEK']);
 
 $routes->get('/jabatan', 'jabatan::index', ['filter' => 'CEK']);
 $routes->post('/jabatan/save', 'jabatan::save', ['filter' => 'CEK']);
-$routes->delete('/jabatan/delete/(:num)', 'jabatan::delete/$1');
+$routes->get('/jabatan/delete/(:num)', 'jabatan::delete/$1', ['filter' => 'CEK']);
 
 
 $routes->get('/pegawai', 'pegawai::index', ['filter' => 'CEK']);
 $routes->get('/pegawai/insert', 'pegawai::insert', ['filter' => 'CEK']);
-$routes->get('/pegawai/detail/$1', 'pegawai::detail/$1');
-$routes->get('/pegawai/update/$1', 'pegawai::update/$1');
+$routes->get('/pegawai/detail/(:num)', 'pegawai::detail/$1', ['filter' => 'CEK']);
+$routes->get('/pegawai/update/(:num)', 'pegawai::update/$1', ['filter' => 'CEK']);
+$routes->post('/pegawai/update_data/(:num)', 'pegawai::update/$1', ['filter' => 'CEK']);
 $routes->post('/pegawai/save', 'pegawai::save', ['filter' => 'CEK']);
+$routes->get('/pegawai/insert_pasangan/(:num)', 'pegawai::insert_pasangan/$1', ['filter' => 'CEK']);
+$routes->post('/pegawai/save_pasangan/(:num)', 'pegawai::save_pasangan/$1', ['filter' => 'CEK']);
+$routes->get('/pegawai/update_pasangan/(:num)', 'pegawai::update_pasangan/$1', ['filter' => 'CEK']);
+$routes->post('/pegawai/update_datapasangan/(:num)', 'pegawai::update_datapasangan/$1', ['filter' => 'CEK']);
+$routes->post('/pegawai/save_anak/(:num)', 'pegawai::save_anak/$1', ['filter' => 'CEK']);
+$routes->post('/pegawai/update_anak/(:num)', 'pegawai::update_anak/$1', ['filter' => 'CEK']);
+$routes->get('/pegawai/delete/(:num)', 'pegawai::delete/$1', ['filter' => 'CEK']);
+
+$routes->get('/mutasi', 'mutasi::index', ['filter' => 'CEK']);
+$routes->get('/mutasi/create', 'mutasi::create', ['filter' => 'CEK']);
+$routes->post('/mutasi/save', 'mutasi::save', ['filter' => 'CEK']);
+$routes->get('/mutasi/update/(:num)', 'mutasi::update/$1', ['filter' => 'CEK']);
+$routes->post('/mutasi/updatemutasi/(:num)', 'mutasi::updatemutasi/$1', ['filter' => 'CEK']);
+$routes->get('/mutasi/delete/(:num)', 'mutasi::delete/$1', ['filter' => 'CEK']);
+
+$routes->get('/pensiun', 'pensiun::index', ['filter' => 'CEK']);
+$routes->post('/pensiun/save', 'pensiun::save', ['filter' => 'CEK']);
+$routes->post('/pensiun/update/(:num)', 'pensiun::update/$1', ['filter' => 'CEK']);
+$routes->get('/pensiun/delete/(:num)', 'pensiun::delete/$1', ['filter' => 'CEK']);
+
+
 
 /*
  * --------------------------------------------------------------------

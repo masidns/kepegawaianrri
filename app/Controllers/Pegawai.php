@@ -14,6 +14,7 @@ class Pegawai extends BaseController
     public function __construct()
     {
         //Do your magic here
+        session()->set(['active' => 'pegawai']);
         $this->pegawaimodel = new PegawaiModel();
         $this->jabatan = new JabatanModel();
         // $this->pasangan = new PasanganModel();

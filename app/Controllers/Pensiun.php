@@ -14,6 +14,7 @@ class Pensiun extends BaseController
     {
         // parent::__construct();
         //Do your magic here
+        session()->set(['active' => 'pensiun']);
         $this->pensiun = new PensiunModel();
         $this->pegawai = new PegawaiModel();
     }

@@ -14,6 +14,7 @@ class Jabatan extends BaseController
     {
         // parent::__construct();
         //Do your magic here
+        session()->set(['active' => 'jabatan']);
         $this->jabatan = new JabatanModel();
         $this->pegawai = new PegawaiModel();
     }

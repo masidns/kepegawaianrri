@@ -36,8 +36,8 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?= base_url('/home') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
+                    <a href="<?= base_url('/home') ?>" class="nav-link <?= session()->get('active') == 'home' ? 'active' : ''; ?>">
+                        <i class=" nav-icon fas fa-home"></i>
                         <p>
                             Home
                             <!-- <span class="right badge badge-danger">New</span> -->
@@ -45,8 +45,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/jabatan') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="<?= base_url('/jabatan') ?>" class="nav-link <?= session()->get('active') == 'jabatan' ? 'active' : ''; ?>">
+                        <i class=" nav-icon fas fa-user-friends"></i>
                         <p>
                             Jabatan
                             <!-- <span class="right badge badge-danger">New</span> -->
@@ -54,8 +54,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/pegawai') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="<?= base_url('/pegawai') ?>" class="nav-link <?= session()->get('active') == 'pegawai' ? 'active' : ''; ?>">
+                        <i class=" nav-icon fas fa-users"></i>
                         <p>
                             Pegawai
                             <!-- <span class="right badge badge-danger">New</span> -->
@@ -63,8 +63,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/mutasi') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="<?= base_url('/mutasi') ?>" class="nav-link <?= session()->get('active') == 'mutasi' ? 'active' : ''; ?>">
+                        <i class=" nav-icon fas fa-user-plus"></i>
                         <p>
                             Mutasi
                             <!-- <span class="right badge badge-danger">New</span> -->
@@ -72,8 +72,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/pensiun') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="<?= base_url('/pensiun') ?>" class="nav-link <?= session()->get('active') == 'pensiun' ? 'active' : ''; ?>">
+                        <i class=" nav-icon fas fa-user-minus"></i>
                         <p>
                             Pensiun
                             <!-- <span class="right badge badge-danger">New</span> -->
@@ -82,7 +82,7 @@
                 </li>
 
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -104,7 +104,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
