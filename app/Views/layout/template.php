@@ -213,6 +213,22 @@
                 }
             });
         })
+
+        // image priview
+        function previewImg() {
+            const gambar = document.querySelector('#inputGroupFile01');
+            const gambarLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            gambarLabel.textContent = gambar.files[0].name;
+
+            const filegambar = new FileReader();
+            filegambar.readAsDataURL(gambar.files[0]);
+
+            filegambar.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
     </script>
     <!-- tabel -->
 </body>

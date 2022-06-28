@@ -25,7 +25,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h5 class="float-left m-0">Tabel Data Pegawai</h5>
-                    <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success ">Tambah data</a>
+                    <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success "><i class="fas fa-plus"></i> Tambah</a>
                 </div>
                 <div class="card-body">
                     <table class="example2 table table-hover table-bordered table-striped  ">
@@ -50,7 +50,7 @@
                                     <td align="center">
                                         <a href="<?= base_url('pegawai/detail/' . $value->idpegawai) ?>" class="btn-sm btn-primary"><i class="fas fa-eye"></i></a>
                                         <a href="<?= base_url('pegawai/update/' . $value->idpegawai) ?>" class="btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="" class="btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        <a href="<?= base_url('/pegawai/delete/' . $value->idpegawai) ?>" class="btn-sm btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

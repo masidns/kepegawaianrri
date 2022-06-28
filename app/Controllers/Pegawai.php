@@ -112,6 +112,15 @@ class Pegawai extends BaseController
                     'required' => 'Jabatan terakhir tidak boleh kosong'
                 ]
             ],
+            'foto' => [
+                'rules' => 'max_size[foto,10240]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Wajib upload foto profile',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
             // 'foto' => [
             //     'rules' => 'required',
             //     'errors' => [
@@ -122,8 +131,19 @@ class Pegawai extends BaseController
             session()->setFlashdata('pesan', 'Error,Data gagal disimpan');
             return redirect()->back()->withInput();
         };
+
+        $filefoto = $this->request->getFile('foto');
+        if ($filefoto->getError() == 4) {
+            $namafoto = 'user.png';
+        } else {
+            $namafoto = $filefoto->getRandomName();
+            $filefoto->move('img/foto_pegawai/', $namafoto);
+        }
+
+
         $this->pegawaimodel->save([
             'nip' => $this->request->getVar('nip'),
+            'foto' => $namafoto,
             'nama' => $this->request->getVar('nama'),
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'tempat_lahir' => $this->request->getVar('tempat_lahir'),
@@ -133,7 +153,6 @@ class Pegawai extends BaseController
             'pendidikan_terakhir' => $this->request->getVar('pendidikan_terakhir'),
             'status_perkawinan' => $this->request->getVar('status_perkawinan'),
             'no_telepon' => $this->request->getVar('no_telepon'),
-            'foto' => $this->request->getVar('foto'),
             'idjabatan' => $this->request->getVar('idjabatan'),
         ]);
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
@@ -215,6 +234,15 @@ class Pegawai extends BaseController
                     'required' => 'No telepon terakhir tidak boleh kosong'
                 ]
             ],
+            'foto' => [
+                'rules' => 'max_size[foto,10240]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Wajib upload foto profile',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
             // 'foto' => [
             //     'rules' => 'required',
             //     'errors' => [
@@ -226,8 +254,20 @@ class Pegawai extends BaseController
             return redirect()->back()->withInput();
         };
 
+        $filefoto = $this->request->getFile('foto');
+        if ($filefoto->getError() == 4) {
+            $namafoto = $this->request->getVar('fotolama');
+        } else {
+            $namafoto = $filefoto->getRandomName();
+            $filefoto->move('img/foto_pegawai/', $namafoto);
+            if ($this->request->getVar('fotolama') != 'user.png') {
+                unlink('img/foto_pegawai/' . $this->request->getVar('fotolama'));
+            }
+        }
+
         $this->pegawaimodel->save([
             'idpegawai' => $idpegawai,
+            'foto' => $namafoto,
             'nip' => $this->request->getVar('nip'),
             'nama' => $this->request->getVar('nama'),
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
@@ -238,7 +278,6 @@ class Pegawai extends BaseController
             'pendidikan_terakhir' => $this->request->getVar('pendidikan_terakhir'),
             'status_perkawinan' => $this->request->getVar('status_perkawinan'),
             'no_telepon' => $this->request->getVar('no_telepon'),
-            'foto' => $this->request->getVar('foto'),
             'idjabatan' => $this->request->getVar('idjabatan'),
         ]);
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
@@ -536,5 +575,23 @@ class Pegawai extends BaseController
 
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan');
         return redirect()->back();
+    }
+
+    public function delete($idpegawai)
+    {
+        # code...
+        $data = $this->pegawaimodel->find($idpegawai);
+        if ($data['foto'] != 'user.png') {
+            unlink('img/foto_pegawai/' . $data['foto']);
+        }
+        $delete = $this->pegawaimodel->delete($idpegawai);
+        if ($delete) {
+            session()->setFlashdata('pesan', 'Success,Data Berhasil Dihapus');
+        } else {
+            session()->setFlashdata('pesan', 'Error,Data Berhasil Dihapus');
+        }
+        return redirect()->to('/pegawai');
+
+        // dd($data['foto']);
     }
 }

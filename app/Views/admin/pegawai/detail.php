@@ -30,18 +30,8 @@
                             <h5 class="float-left m-0">Foto Pegawai</h5>
                         </div>
                         <div class="card-body">
-                            <img class="card-img-top" src="<?= base_url('/img/user.png') ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
+                            <img class="card-img-top" src="<?= base_url('/img/foto_pegawai/' . $pegawai->foto) ?>" alt="Card image cap">
+
                         </div>
                         <!-- <div class="card-footer">
                             akhir

@@ -63,18 +63,19 @@ class PegawaiModel extends Model
                 ->join('jabatan', 'jabatan.idjabatan = pegawai.idjabatan')
                 ->get()->getResult();
         }
-        // return $this->db->table('pegawai')
-        //     ->join('jabatan', 'jabatan.idjabatan = pegawai.idjabatan', 'LEFT')
-        //     ->join('pasangan', 'pasangan.idpegawai = pegawai.idpegawai', 'RIGHT')
-        //     ->getWhere(['idpegawai' => $idpegawai])->getRowObject();
-        return $this->db->query("
-        SELECT
-        `pegawai`.*,
-        `jabatan`.*,
-        `pasangan`.*
-      FROM
-        `jabatan`
-        LEFT JOIN `pegawai` ON `pegawai`.`idjabatan` = `jabatan`.`idjabatan`
-        RIGHT JOIN `pasangan` ON `pasangan`.`idpegawai` = `pegawai`.`idpegawai`")->getRowObject();
+        return $this->db->table('pegawai')
+            ->join('jabatan', 'jabatan.idjabatan = pegawai.idjabatan', 'LEFT')
+            // ->join('pasangan', 'pasangan.idpegawai = pegawai.idpegawai', 'RIGHT')
+            ->getWhere(['idpegawai' => $idpegawai])->getRowObject();
+        //     return $this->db->query("
+        //     SELECT
+        //     `pegawai`.*,
+        //     `jabatan`.*,
+        //     `pasangan`.*
+        //   FROM
+        //     `jabatan`
+        //     LEFT JOIN `pegawai` ON `pegawai`.`idjabatan` = `jabatan`.`idjabatan`
+        //     RIGHT JOIN `pasangan` ON `pasangan`.`idpegawai` = `pegawai`.`idpegawai`
+        //     `pegawai` WHERE idpegawai = $idpegawai")->getRowObject();
     }
 }

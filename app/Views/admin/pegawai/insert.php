@@ -31,15 +31,18 @@
                                 <h5 class="float-left m-0">Upload Foto Pegawai</h5>
                             </div>
                             <div class="card-body">
-                                <img class="card-img-top" src="<?= base_url('/img/user.png') ?>" alt="Card image cap">
+                                <img class="card-img-top img-preview" src="<?= base_url('/img/user.png') ?>">
                                 <div class="card-body">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                            <input type="file" name="foto" class="custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="inputGroupFile01" onchange="previewImg()">
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                        <div id="" class="invalid-feedback">
+                                            <?= $validation->getError('foto'); ?>
                                         </div>
                                     </div>
                                 </div>
