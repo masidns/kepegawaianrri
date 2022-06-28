@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Controllers\Pegawai;
 use CodeIgniter\Model;
 
 class JabatanModel extends Model
@@ -45,9 +46,11 @@ class JabatanModel extends Model
         # code...
         if ($idjabatan == false) {
             return $this->db->table('jabatan')
+
                 ->get()->getResult();
         }
         return $this->db->table('jabatan')
-            ->getWhere(['idjabatan' => $idjabatan])->getRow();
+            ->join('pegawai', 'pegawai.idjabatan = jabatan.idjabatan', 'LEFT')
+            ->getWhere(['idjabatan' => $idjabatan])->getRowObject();
     }
 }

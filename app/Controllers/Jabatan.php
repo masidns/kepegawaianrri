@@ -87,12 +87,23 @@ class Jabatan extends BaseController
     public function delete($idjabatan)
     {
         # code...
-        if ($this->jabatan->delete($idjabatan)) {
-            session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
-            return redirect()->to('jabatan');
-        } else {
+        $data = $this->pegawai->getpegawai($idjabatan);
+        if ($data->idjabatan == $idjabatan) {
             session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
             return redirect()->back();
+        } else {
+            $this->jabatan->delete($idjabatan);
+            session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
+            return redirect()->to('jabatan');
         }
+        // dd($data->idjabatan);
+        // dd($data);
+        // if ($this->jabatan->delete($idjabatan)) {
+        //     session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
+        //     return redirect()->to('jabatan');
+        // } else {
+        //     session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+        //     return redirect()->back();
+        // }
     }
 }
