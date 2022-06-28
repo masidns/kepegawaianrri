@@ -159,13 +159,15 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama Pegawai</label>
-                        <select name="idpegawai" class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai')  ? 'is-valid' : '') ?>" style="width: 100%;" required>
+                        <select name="idpegawai" class="form-control select2bs4  <?= ($validation->hasError('idpegawai')) ? 'is-invalid' : (old('idpegawai') != '' ? 'is-valid' : '') ?>" style="width: 100%;" required>
                             <option Selected>Pilih Nama Pegawai...</option>
                             <?php foreach ($pegawaipensiun as $key => $value) : ?>
                                 <?php if (empty($value->nopensiun)) : ?>
-                                    <option value="<?= $value->idpegawai ?>" <?= (old('idpegawai')) == $value->idpegawai ? 'Selected' : '' ?>>
+
+                                    <option value="<?= $value->idpegawai ?>" <?= old('idpegawai') == $value->idpegawai ? 'Selected' : '' ?>>
                                         <?= $value->nama ?>
                                     </option>
+
                                 <?php endif ?>
                             <?php endforeach ?>
                             <div id="" class="invalid-feedback">

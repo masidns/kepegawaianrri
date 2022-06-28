@@ -66,11 +66,11 @@ class PensiunModel extends Model
         if ($idpensiun == false) {
             return $this->db->query(
                 "SELECT
-            `pegawai`.*,
-            `pensiun`.*
-            FROM
-            `pegawai`
-            LEFT JOIN `pensiun` ON `pensiun`.`idpegawai` = `pegawai`.`idpegawai`"
+                `pensiun`.*,
+                `pegawai`.*
+              FROM
+                `pensiun`
+                RIGHT JOIN `pegawai` ON `pegawai`.`idpegawai` = `pensiun`.`idpegawai`"
             )->getResult();
         }
         return $this->db->table('pensiun')

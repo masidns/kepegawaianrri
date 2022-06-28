@@ -28,7 +28,7 @@ class Pensiun extends BaseController
             'pegawaipensiun' => $this->pensiun->getpensiunpegawai(),
             'validation' => \Config\Services::validation(),
         ];
-        // dd($data['pegawai']);
+        // dd($data['pegawaipensiun']);
         return view('admin/pensiun/index', $data);
     }
 
