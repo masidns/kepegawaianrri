@@ -1,10 +1,17 @@
 <?= $this->extend('login/template') ?>
 <?= $this->section('content') ?>
+
+<!-- <div class="text-center">
+    <img src="<? base_url('/RRI.png') ?>" class="" width="10%" alt="">
+</div> -->
+
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="../../index2.html" class="h1"><b>RRI</b></a>
+            <!-- <a href="../../index2.html" class="h1"><b>RRI</b></a> -->
+            <img src="<?= base_url('/RRI.png') ?>" class="" width="50%" alt="">
+
         </div>
         <div class="card-body">
             <p class="login-box-msg">silahkan masukan username dan password anda</p>

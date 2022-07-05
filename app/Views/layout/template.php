@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Kepegawaian RRI Kota Jayapura</title>
+    <link rel="icon" type="image/x-icon" href="<?= base_url('/favicon_io/favicon.ico') ?>">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -56,11 +57,10 @@
         <!-- Content Wrapper. Contains page content -->
         <?= $this->renderSection('content') ?>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
+        <footer class="main-footer text-center">
+            <strong class="text-center">Copyright &copy; 2022-2023 <a href="https://adminlte.io">IDNS</a>.</strong>
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                <b>Version</b> 0.0.1
             </div>
         </footer>
 
