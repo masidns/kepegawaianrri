@@ -58,7 +58,7 @@
         <?= $this->renderSection('content') ?>
         <!-- /.content-wrapper -->
         <footer class="main-footer text-center">
-            <strong class="text-center">Copyright &copy; 2022-2023 <a href="https://adminlte.io">IDNS</a>.</strong>
+            <strong class="text-center">Copyright &copy; 2022 <a href="https://adminlte.io">IDNS</a>.</strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 0.0.1
             </div>
