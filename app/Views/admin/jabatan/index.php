@@ -1,7 +1,3 @@
-<?php
-
-use Faker\Provider\Base;
-?>
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
@@ -30,9 +26,19 @@ use Faker\Provider\Base;
                 <div class="card-header">
                     <h5 class="m-0 float-left">Tabel Data Jabatan</h5>
                     <!-- <a href="#" class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> Tambah</a> -->
-                    <button type="button" class="btn-sm btn-success float-right float-right" data-toggle="modal" data-target="#modal-default">
-                        <i class="fas fa-plus"></i> Tambah
-                    </button>
+                    <div class="d-flex justify-content-end">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a target="_blank" href="<?= base_url('/laporan/printjabatan') ?>" class="btn btn-outline-primary "><i class="fas fa-print"></i> </a>
+                            </div>
+                            <div class="col-sm-8">
+                                <button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="card-body">
 

@@ -595,4 +595,13 @@ class Pegawai extends BaseController
 
         // dd($data['foto']);
     }
+
+    public function print()
+    {
+        # code...
+        $data = [
+            'pegawai' => $this->pegawaimodel->getpegawai(),
+        ];
+        return view('/admin/pegawai/print', $data);
+    }
 }

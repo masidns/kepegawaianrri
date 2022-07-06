@@ -21,7 +21,7 @@ class Auth extends BaseController
         //
         // $data = [];
         if (session()->get('login') == true) {
-            // return
+            return redirect()->to('/home');
         } else {
             $user = $this->auth->findall();
             if (empty($user)) {

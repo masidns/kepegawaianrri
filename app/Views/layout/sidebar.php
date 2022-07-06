@@ -82,8 +82,8 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= session()->get('active') == 'laporanjabatan' ? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= session()->get('active') == 'laporanjabatan' ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Laporan
@@ -91,8 +91,8 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
+                        <li class="nav-item ">
+                            <a href="<?= base_url('/laporan') ?>" class="nav-link <?= session()->get('active') == 'laporanjabatan' ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Jabatan</p>
                             </a>

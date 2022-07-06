@@ -39,6 +39,28 @@
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/select2/css/select2.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/admin/plugins_/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- select -->
+
+    <style>
+        @media print {
+            @page {
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+
+            .label,
+            .dataTables_length,
+            .dataTables_filter,
+            .dataTables_info,
+            .dataTables_paginate,
+            .btn-sm,
+            th:nth-child(4),
+            td:nth-child(4),
+            footer {
+                display: none;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -120,11 +142,22 @@
     <script src="<?= base_url() ?>/admin/plugins_/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="<?= base_url() ?>/admin/plugins_/sweetalert2/sweetalert2.min.js"></script>
-    //data mask
+    <!-- data mask -->
     <script src="<?= base_url() ?>/admin/plugins_/inputmask/jquery.inputmask.min.js"></script>
-    //data mask
+    <!-- data mask -->
     <!-- select -->
     <script src="<?= base_url() ?>/admin/plugins_/select2/js/select2.full.min.js"></script>
+    <!-- select -->
+    <!-- select -->
+    <script src="<?= base_url() ?>/admin/filter.js"></script>
+    <SCript>
+        $('.myTable').ddTableFilter();
+        var options = {
+            sortOpt: false,
+
+        }
+        $('.myTable').ddTableFilter(options);
+    </SCript>
     <!-- select -->
     <script>
         $(function() {
@@ -165,7 +198,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

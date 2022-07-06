@@ -24,8 +24,24 @@
 
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h5 class="float-left m-0">Tabel Data Pegawai</h5>
-                    <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success "><i class="fas fa-plus"></i> Tambah</a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5 class="float-left m-0">Tabel Data Pegawai</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+
+                                <div class="col-sm-10 float-right">
+                                    <a target="_blank" href="<?= base_url('/pegawai/print') ?>" class="float-right btn-sm btn-outline-primary "><i class="fas fa-print"></i> print</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success "><i class="fas fa-plus"></i> Tambah</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-success "><i class="fas fa-plus"></i> Tambah</a>
+                    <a href="<?= base_url('/pegawai/insert') ?>" class="float-right btn-sm btn-outline-primary "><i class="fas fa-print"></i> print</a> -->
                 </div>
                 <div class="card-body">
                     <table class="example2 table table-hover table-bordered table-striped  ">
