@@ -49,7 +49,6 @@
                         <i class=" nav-icon fas fa-user-friends"></i>
                         <p>
                             Jabatan
-                            <!-- <span class="right badge badge-danger">New</span> -->
                         </p>
                     </a>
                 </li>
@@ -82,8 +81,8 @@
                 </li>
 
 
-                <li class="nav-item <?= session()->get('active') == 'laporanjabatan' ? 'menu-open' : ''; ?>">
-                    <a href="#" class="nav-link <?= session()->get('active') == 'laporanjabatan' ? 'active' : ''; ?>">
+                <li class="nav-item <?= session()->get('active') == 'laporanjabatan' ? 'menu-open' : (session()->get('active') == 'laporanpegawai' ? 'menu-open' : ''); ?>">
+                    <a href="#" class="nav-link <?= session()->get('active') == 'laporanjabatan' ? 'active' : (session()->get('active') == 'laporanpegawai' ? 'active' : ''); ?>">
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Laporan
@@ -91,14 +90,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item ">
+                        <!-- <li class="nav-item ">
                             <a href="<?= base_url('/laporan') ?>" class="nav-link <?= session()->get('active') == 'laporanjabatan' ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Jabatan</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="<?= base_url('laporan/laporanpegawai?agama=') ?>" class="nav-link <?= session()->get('active') == 'laporanpegawai' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Pegawai</p>
                             </a>

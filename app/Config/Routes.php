@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -72,6 +72,11 @@ $routes->get('/pensiun', 'pensiun::index', ['filter' => 'CEK']);
 $routes->post('/pensiun/save', 'pensiun::save', ['filter' => 'CEK']);
 $routes->post('/pensiun/update/(:num)', 'pensiun::update/$1', ['filter' => 'CEK']);
 $routes->get('/pensiun/delete/(:num)', 'pensiun::delete/$1', ['filter' => 'CEK']);
+
+$routes->get('/laporan', 'laporan::index', ['filter' => 'CEK']);
+$routes->get('/laporan/printjabatan', 'laporan::printjabatan', ['filter' => 'CEK']);
+$routes->get('/laporan/laporanpegawai', 'laporan::laporanpegawai', ['filter' => 'CEK']);
+$routes->get('/laporan/printpegawai', 'laporan::printpegawai', ['filter' => 'CEK']);
 
 
 
