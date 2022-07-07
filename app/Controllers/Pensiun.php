@@ -164,4 +164,13 @@ class Pensiun extends BaseController
             return redirect()->to('/pensiun');
         }
     }
+
+    public function print()
+    {
+        # code...
+        $data = [
+            'pensiun' => $this->pensiun->getpensiun(),
+        ];
+        return view('/admin/pensiun/print', $data);
+    }
 }

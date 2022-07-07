@@ -61,11 +61,22 @@
                     </div>
                     <div class="tab-content" id="custom-tabs-four-tabContent">
                         <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                            <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#modal-default">
-                                <i class="fas fa-plus"></i> Tambah
-                            </button>
-                            <br>
-                            <br>
+                            <div class="row">
+                                <div class="col-sm mb-2">
+                                    <a target="_blank" href="<?= base_url('pensiun/print') ?>" class="btn btn-outline-primary">
+                                        <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+                                        <i class="fas fa-plus"></i> Tambah
+                                    </button>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <button type="button" class="btn-sm btn-success float-right" data-toggle="modal" data-target="#modal-default">
+                                        <i class="fas fa-plus"></i> Tambah
+                                    </button>
+                                </div> -->
+                            </div>
+                            <!-- <br> -->
                             <table class="table table-hover table-bordered table-striped example2 ">
                                 <thead>
                                     <tr>

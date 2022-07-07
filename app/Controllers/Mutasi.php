@@ -203,4 +203,15 @@ class Mutasi extends BaseController
         }
         // dd($this->mutasi->getmutasi($idmutasi));
     }
+
+    public function print()
+    {
+        # code...
+        $data = [
+            // 'mutasi' => $this->mutasi->getmutasi(),
+            'mutasi' => $this->mutasi->getmutasi(),
+        ];
+        // dd($data);
+        return view('/admin/mutasi/print', $data);
+    }
 }

@@ -24,8 +24,24 @@
 
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h5 class="m-0 float-left">Tabel Data Mutasi</h5>
-                    <a href="<?= base_url('mutasi/create') ?>" class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> Tambah</a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5 class="m-0 float-left">Tabel Data Mutasi</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <a target="_blank" href="<?= base_url('mutasi/print') ?>" class="btn-sm btn-outline-primary float-right"><i class="fas fa-print"></i> print</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="<?= base_url('mutasi/create') ?>" class="btn-sm btn-success float-right"><i class="fas fa-plus"></i> Tambah</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-bordered table-striped example2 ">
@@ -46,9 +62,9 @@
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $value->nomutasi ?></td>
                                     <td><?= $value->nama ?></td>
-                                    <td> <?= $value->unit_kerja_lama ?></td>
-                                    <td> <?= $value->unit_kerja_baru ?></td>
-                                    <td> <?= $value->tanggal_mutasi ?></td>
+                                    <td><?= $value->unit_kerja_lama ?></td>
+                                    <td><?= $value->unit_kerja_baru ?></td>
+                                    <td><?= $value->tanggal_mutasi ?></td>
                                     <td align="center">
                                         <a type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-default-<?= $value->idmutasi ?>"><i class="fas fa-eye"></i>
                                         </a>
