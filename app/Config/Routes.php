@@ -45,6 +45,7 @@ $routes->get('/home', 'Home::index', ['filter' => 'CEK']);
 $routes->get('/jabatan', 'jabatan::index', ['filter' => 'CEK']);
 $routes->post('/jabatan/save', 'jabatan::save', ['filter' => 'CEK']);
 $routes->get('/jabatan/delete/(:num)', 'jabatan::delete/$1', ['filter' => 'CEK']);
+$routes->get('/jabatan/print', 'jabatan::print', ['filter' => 'CEK']);
 
 
 $routes->get('/pegawai', 'pegawai::index', ['filter' => 'CEK']);
@@ -60,6 +61,7 @@ $routes->post('/pegawai/update_datapasangan/(:num)', 'pegawai::update_datapasang
 $routes->post('/pegawai/save_anak/(:num)', 'pegawai::save_anak/$1', ['filter' => 'CEK']);
 $routes->post('/pegawai/update_anak/(:num)', 'pegawai::update_anak/$1', ['filter' => 'CEK']);
 $routes->get('/pegawai/delete/(:num)', 'pegawai::delete/$1', ['filter' => 'CEK']);
+$routes->get('/pegawai/print', 'pegawai::print', ['filter' => 'CEK']);
 
 $routes->get('/mutasi', 'mutasi::index', ['filter' => 'CEK']);
 $routes->get('/mutasi/create', 'mutasi::create', ['filter' => 'CEK']);
@@ -67,11 +69,13 @@ $routes->post('/mutasi/save', 'mutasi::save', ['filter' => 'CEK']);
 $routes->get('/mutasi/update/(:num)', 'mutasi::update/$1', ['filter' => 'CEK']);
 $routes->post('/mutasi/updatemutasi/(:num)', 'mutasi::updatemutasi/$1', ['filter' => 'CEK']);
 $routes->get('/mutasi/delete/(:num)', 'mutasi::delete/$1', ['filter' => 'CEK']);
+$routes->get('/mutasi/print', 'mutasi::print', ['filter' => 'CEK']);
 
 $routes->get('/pensiun', 'pensiun::index', ['filter' => 'CEK']);
 $routes->post('/pensiun/save', 'pensiun::save', ['filter' => 'CEK']);
 $routes->post('/pensiun/update/(:num)', 'pensiun::update/$1', ['filter' => 'CEK']);
 $routes->get('/pensiun/delete/(:num)', 'pensiun::delete/$1', ['filter' => 'CEK']);
+$routes->get('/pensiun/print', 'pensiun::print', ['filter' => 'CEK']);
 
 $routes->get('/laporan', 'laporan::index', ['filter' => 'CEK']);
 $routes->get('/laporan/printjabatan', 'laporan::printjabatan', ['filter' => 'CEK']);
